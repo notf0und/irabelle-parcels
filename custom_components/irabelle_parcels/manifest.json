@@ -1,0 +1,14 @@
+{
+  "domain": "irabelle_parcels",
+  "name": "Irabelle Parcels",
+  "codeowners": ["@notf0und"],
+  "config_flow": true,
+  "dependencies": ["frontend", "http", "websocket_api"],
+  "documentation": "https://github.com/notf0und/irabelle-parcels",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/notf0und/irabelle-parcels/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

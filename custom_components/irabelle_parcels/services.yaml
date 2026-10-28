@@ -1,0 +1,48 @@
+add_parcel:
+  fields:
+    tracking_number:
+      required: true
+      selector:
+        text:
+    name:
+      selector:
+        text:
+    carrier:
+      selector:
+        text:
+
+remove_parcel:
+  fields:
+    tracking_number:
+      required: true
+      selector:
+        text:
+
+update_parcel:
+  fields:
+    tracking_number:
+      required: true
+      selector:
+        text:
+    name:
+      selector:
+        text:
+    carrier:
+      selector:
+        text:
+
+archive_parcel:
+  fields:
+    tracking_number:
+      required: true
+      selector:
+        text:
+
+unarchive_parcel:
+  fields:
+    tracking_number:
+      required: true
+      selector:
+        text:
+
+clear_archive:

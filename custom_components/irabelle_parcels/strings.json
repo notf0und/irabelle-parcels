@@ -1,0 +1,160 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Irabelle Parcels",
+        "description": "Track packages from almost any carrier worldwide. The carrier is detected automatically when you add a parcel.",
+        "data": {
+          "country": "Destination country",
+          "postal_code": "Postal code (optional)",
+          "scan_interval": "Polling frequency",
+          "auto_archive_after": "Archive delivered parcels after"
+        },
+        "data_description": {
+          "auto_archive_after": "Delivered parcels move to the archive after this time (0 = never). Archived parcels keep their history and can be restored.",
+          "postal_code": "Some carriers give better delivery estimates with it."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This integration is already configured.",
+      "single_instance_allowed": "Irabelle Parcels is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Irabelle Parcels",
+        "description": "Select an option to proceed.",
+        "menu_options": {
+          "add_parcel": "Add parcel",
+          "remove_parcel": "Delete parcel",
+          "settings": "Settings",
+          "fingerprint": "Device fingerprint (advanced)"
+        },
+        "menu_option_descriptions": {
+          "add_parcel": "Track a new package",
+          "remove_parcel": "Delete a parcel (active or archived) for good",
+          "settings": "Destination country, postal code, polling frequency and archiving",
+          "fingerprint": "Optional device fingerprint override"
+        }
+      },
+      "add_parcel": {
+        "title": "Add parcel",
+        "description": "The carrier is detected automatically. Adding an archived parcel restores it.",
+        "data": {
+          "tracking_number": "Tracking number",
+          "name": "Name (optional)",
+          "carrier": "Carrier (optional)"
+        }
+      },
+      "remove_parcel": {
+        "title": "Delete parcel",
+        "data": {
+          "tracking_number": "Parcel"
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Destination country, postal code, polling frequency and archiving.",
+        "data": {
+          "country": "Destination country",
+          "postal_code": "Postal code (optional)",
+          "scan_interval": "Polling frequency",
+          "auto_archive_after": "Archive delivered parcels after"
+        },
+        "data_description": {
+          "auto_archive_after": "Delivered parcels move to the archive after this time (0 = never). Archived parcels keep their history and can be restored.",
+          "postal_code": "Some carriers give better delivery estimates with it."
+        }
+      },
+      "fingerprint": {
+        "title": "Device fingerprint (advanced)",
+        "description": "Leave all fields empty to use the automatically generated fingerprint.",
+        "data": {
+          "unique_id": "unique_id (16 hex chars, e.g. Android ID)",
+          "model": "model (e.g. Pixel 6)",
+          "device_id": "device_id (e.g. oriole)",
+          "manufacturer": "manufacturer (e.g. Google)",
+          "version": "app version (e.g. 3.0.11)"
+        }
+      }
+    },
+    "error": {
+      "invalid_tracking": "That does not look like a valid tracking number (letters and digits only).",
+      "already_tracked": "This tracking number is already being tracked."
+    }
+  },
+  "services": {
+    "add_parcel": {
+      "name": "Add parcel",
+      "description": "Start tracking a parcel. The carrier is detected automatically unless given. Adding an archived parcel restores it.",
+      "fields": {
+        "tracking_number": {
+          "name": "Tracking number",
+          "description": "The tracking number of the parcel."
+        },
+        "name": {
+          "name": "Name",
+          "description": "Friendly name for the parcel."
+        },
+        "carrier": {
+          "name": "Carrier",
+          "description": "Carrier name or 'Auto Detect'."
+        }
+      }
+    },
+    "remove_parcel": {
+      "name": "Remove parcel",
+      "description": "Delete a parcel (active or archived) and its sensor for good.",
+      "fields": {
+        "tracking_number": {
+          "name": "Tracking number",
+          "description": "The tracking number of the parcel."
+        }
+      }
+    },
+    "update_parcel": {
+      "name": "Update parcel",
+      "description": "Rename a parcel and/or change its carrier.",
+      "fields": {
+        "tracking_number": {
+          "name": "Tracking number",
+          "description": "The tracking number to update."
+        },
+        "name": {
+          "name": "Name",
+          "description": "New friendly name for the parcel."
+        },
+        "carrier": {
+          "name": "Carrier",
+          "description": "Carrier name or 'Auto Detect'."
+        }
+      }
+    },
+    "archive_parcel": {
+      "name": "Archive parcel",
+      "description": "Stop tracking a parcel and move it to the archive. Its history is kept.",
+      "fields": {
+        "tracking_number": {
+          "name": "Tracking number",
+          "description": "The tracking number of the parcel."
+        }
+      }
+    },
+    "unarchive_parcel": {
+      "name": "Restore parcel",
+      "description": "Move an archived parcel back to the active list and track it again.",
+      "fields": {
+        "tracking_number": {
+          "name": "Tracking number",
+          "description": "The tracking number of the parcel."
+        }
+      }
+    },
+    "clear_archive": {
+      "name": "Clear archive",
+      "description": "Delete every archived parcel for good."
+    }
+  }
+}

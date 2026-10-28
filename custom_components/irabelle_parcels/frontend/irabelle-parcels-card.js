@@ -11,7 +11,7 @@
  */
 
 const DOMAIN = "irabelle_parcels";
-const VERSION = "1.0.1";
+const VERSION = "1.0.2";
 
 const STATUS = {
   pending: { label: "Checking…", icon: "mdi:timer-sand", color: "var(--disabled-text-color, #9e9e9e)" },
@@ -765,11 +765,17 @@ function defineCards() {
       const s = status(parcel);
       this.shadowRoot.innerHTML = `
         <style>${STYLES}
-          .scrim { position: fixed; inset: 0; z-index: 10; background: rgba(0, 0, 0, 0.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
+          .scrim { position: fixed; inset: 0; z-index: 10; background: var(--mdc-dialog-scrim-color, rgba(0, 0, 0, 0.45)); display: flex; align-items: center; justify-content: center; padding: 16px; }
           .panel {
             width: min(520px, 100%); max-height: calc(100vh - 32px); overflow: auto; box-sizing: border-box;
-            background: var(--ha-card-background, var(--card-background-color, #fff)); color: var(--primary-text-color);
-            border-radius: var(--ha-dialog-border-radius, 24px); padding: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            /* Same surface as Home Assistant's own dialogs, so themes with
+               translucent cards (frosted glass) still get a readable popup. */
+            background: var(--ha-dialog-surface-background, var(--mdc-theme-surface, var(--card-background-color, #fff)));
+            backdrop-filter: var(--ha-dialog-surface-backdrop-filter, none);
+            -webkit-backdrop-filter: var(--ha-dialog-surface-backdrop-filter, none);
+            color: var(--primary-text-color);
+            border-radius: var(--ha-dialog-border-radius, 24px); padding: 20px;
+            box-shadow: var(--dialog-box-shadow, 0 8px 32px rgba(0, 0, 0, 0.3));
             font-family: var(--paper-font-body1_-_font-family, var(--ha-font-family-body, Roboto, sans-serif));
           }
           .head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
